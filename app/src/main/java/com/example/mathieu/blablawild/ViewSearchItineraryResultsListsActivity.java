@@ -15,7 +15,7 @@ public class ViewSearchItineraryResultsListsActivity extends AppCompatActivity {
 
         Intent II = getIntent();
         String mDépart = II.getStringExtra("départ");
-        String mArrivée= II.getStringExtra("Arrivée");
+        String mArrivée= II.getStringExtra("arrivée");
         String mDate = II.getStringExtra("Date");
         this.setTitle(mDépart +" "+ mArrivée +" "+ mDate);
 

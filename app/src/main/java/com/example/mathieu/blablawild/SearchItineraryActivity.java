@@ -45,7 +45,7 @@ public class SearchItineraryActivity extends AppCompatActivity {
                     String mArrivée=arrivée.getText().toString();
                     String mDate=Date.getText().toString();
                     II.putExtra("départ", mDépart);
-                    II.putExtra("Arrivée", mArrivée);
+                    II.putExtra("arrivée", mArrivée);
                     II.putExtra("Date", mDate);
                     startActivity(II);}
 
