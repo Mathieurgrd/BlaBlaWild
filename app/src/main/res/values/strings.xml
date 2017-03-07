@@ -8,5 +8,7 @@
     <string name="Date">Rechercher</string>
     <string name="BoutonHome">Rechercher Trajet</string>
     <string name="Toast">Veuillez renseigner les champs demandés !</string>
+    <string name="Toast2">Bravo ton départ est fixé pour le </string>
+    <string name="Menu">Résultats</string>
 </resources>
 

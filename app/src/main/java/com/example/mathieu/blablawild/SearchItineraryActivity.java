@@ -14,6 +14,8 @@ import static com.example.mathieu.blablawild.R.id.Arrivée;
 public class SearchItineraryActivity extends AppCompatActivity {
 
 
+    public final static String TRAJET = "trajet";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class SearchItineraryActivity extends AppCompatActivity {
         final EditText départ = (EditText) findViewById(R.id.départ);
         final EditText arrivée =(EditText) findViewById(Arrivée);
         final EditText Date =  (EditText) findViewById(R.id.Date);
-        final Intent II = new Intent(SearchItineraryActivity.this,ViewSearchItineraryResultsListsActivity.class );
+
 
 
         final Button buttonSearch = (Button) findViewById(R.id.buttonSearch);
@@ -41,13 +43,16 @@ public class SearchItineraryActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (départ.length() != 0 && arrivée.length() != 0)
-                {   String mDépart = départ.getText().toString();
+                {
+
+                    String mDépart = départ.getText().toString();
                     String mArrivée=arrivée.getText().toString();
                     String mDate=Date.getText().toString();
-                    II.putExtra("départ", mDépart);
-                    II.putExtra("arrivée", mArrivée);
-                    II.putExtra("Date", mDate);
-                    startActivity(II);}
+                    SearchRequestModel trajet = new SearchRequestModel(mDépart, mArrivée, mDate);
+                    Intent i = new Intent(SearchItineraryActivity.this, ViewSearchItineraryResultsListsActivity.class);
+
+                    i.putExtra(SearchItineraryActivity.TRAJET, trajet );
+                    startActivity(i);}
 
                 else { Toast.makeText(SearchItineraryActivity.this, getString(R.string.Toast), Toast.LENGTH_SHORT).show();
 

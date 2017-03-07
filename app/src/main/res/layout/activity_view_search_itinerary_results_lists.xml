@@ -11,5 +11,10 @@
     tools:context="com.example.mathieu.blablawild.ViewSearchItineraryResultsListsActivity">
 
 
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/listviewsearchresults"/>
 </RelativeLayout>
