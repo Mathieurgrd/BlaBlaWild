@@ -13,6 +13,8 @@ public class SearchRequestModel implements Parcelable{
     private String mVilleDestination;
     private int mDateP;
 
+    private SearchRequestModel(){}
+
     public SearchRequestModel(String mVilleDepart, String mVilleDestination, String mDate) {
 
         this.mVilleDepart= mVilleDepart;
