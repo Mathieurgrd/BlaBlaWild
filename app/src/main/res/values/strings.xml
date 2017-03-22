@@ -10,5 +10,15 @@
     <string name="Toast">Veuillez renseigner les champs demandés !</string>
     <string name="Toast2">Bravo ton départ est fixé pour le </string>
     <string name="Menu">Résultats</string>
+    <string name="title_activity_submit_itinerary">SubmitItineraryActivity</string>
+    <string name="hintDepart">Depart</string>
+    <string name="hintArrivée">Arrivée</string>
+    <string name="hintdate">Date</string>
+    <string name="hintprix">Prix</string>
+    <string name="hintnom">Nom</string>
+    <string name="hintprénom">Prénom</string>
+    <string name="Drivername">Bernard</string>
+    <string name="Driversurname">Tapis</string>
+
 </resources>
 

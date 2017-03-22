@@ -8,6 +8,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button buttonAccueil;
+    Button buttonSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-        buttonAccueil = (Button)findViewById(R.id.button2);
+        buttonSubmit = (Button) findViewById(R.id.button3);
+        buttonAccueil = (Button)findViewById(R.id.button4);
 
         buttonAccueil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,7 +27,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        buttonSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Submit = new Intent(MainActivity.this, SubmitItineraryActivity.class);
+                startActivity(Submit);
+            }
+
+            })
+
+            ;
     }
+
+
+
 
 
 

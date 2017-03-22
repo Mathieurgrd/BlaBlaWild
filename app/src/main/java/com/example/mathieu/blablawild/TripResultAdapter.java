@@ -1,58 +1,50 @@
 package com.example.mathieu.blablawild;
 
-
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by mathieu on 06/03/17.
+ * Created by mathieu on 20/03/17.
  */
 
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
 
-class TripResultAdapter extends ArrayAdapter {
-    private ArrayList<TripResultModel> results = new ArrayList<>();
-    public TripResultAdapter(Context context, int textViewResourceId, ArrayList<TripResultModel> results) {
-        super(context, textViewResourceId, results);
-        this.results= results;
+import com.google.firebase.database.Query;
+
+
+public class TripResultAdapter extends Firebaseadapter<ItineraryModel> {
+
+    TextView ID;
+    TextView firstName;
+    TextView Lastname;
+    TextView departureDate;
+    TextView departure;
+    TextView destination;
+    TextView price;
+
+
+
+    public TripResultAdapter(Query ref, Activity activity, int layout) {
+        super(ref, ItineraryModel.class, layout, activity);
 
     }
+
 
     @Override
-    public int getCount() {
+    protected void populateView(View view, ItineraryModel iItineraire) {
 
-        int count= results.size(); //counts the total number of elements from the arrayList.
-        return count;//returns the total count to adapter
-    }
 
-    @SuppressLint("ViewHolder")
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+        departureDate = (TextView)view.findViewById(R.id.textDateDepart);
+        departure = (TextView)view.findViewById(R.id.textviewdepart);
+        price = (TextView)view.findViewById(R.id.textPrix);
+        destination=(TextView)view.findViewById(R.id.textViewarrivée);
 
-        View variableview;
-        variableview = convertView ;
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        variableview = inflater.inflate(R.layout.trip_item, null);
-        TextView textHeure = (TextView) variableview.findViewById(R.id.textHeure);
-        TextView textPrix = (TextView) variableview.findViewById(R.id.textPrix);
-        TextView textDateDepart = (TextView) variableview.findViewById(R.id.textDateDepart);
-        textHeure.setText(results.get(position).getHeure());
-        textPrix.setText(results.get(position).getPrix());
-        textDateDepart.setText(results.get(position).getDateDepart());
-        return variableview;
+        departureDate.setText(String.valueOf(iItineraire.getmDepartureDate()));
+        destination.setText(String.valueOf(iItineraire.getmArrival()));
+        departure.setText(String.valueOf(iItineraire.getmDeparture()));
+        price.setText(String.valueOf(iItineraire.getmPrice()));
+
 
     }
-
-
-
 }
 
 

@@ -9,38 +9,24 @@ import android.os.Parcelable;
 
 public class SearchRequestModel implements Parcelable{
 
-    private String mVilleDepart ;
-    private String mVilleDestination;
-    private int mDateP;
+    private String mDepart;
+    private String mDestination;
+    private String mDate;
 
-    private SearchRequestModel(){}
-
-    public SearchRequestModel(String mVilleDepart, String mVilleDestination, String mDate) {
-
-        this.mVilleDepart= mVilleDepart;
-        this.mVilleDestination=mVilleDestination;
-        this.mDateP= Integer.parseInt(mDate);
+    private SearchRequestModel(){
 
     }
 
-    public SearchRequestModel(Parcel in) {
-        mVilleDepart = in.readString();
-        mVilleDestination = in.readString();
-        mDateP = in.readInt();
+    public SearchRequestModel(String depart, String destination, String date){
+        this.mDepart = depart;
+        this.mDestination= destination;
+        this.mDate= date;
     }
 
-
-
-    public String getmVilleDepart() {
-        return mVilleDepart;
-    }
-
-   public String getmVilleDestination() {
-       return mVilleDestination;
-   }
-
-    public int getmDate() {
-        return mDateP;
+    protected SearchRequestModel(Parcel in) {
+        mDepart = in.readString();
+        mDestination = in.readString();
+        mDate = in.readString();
     }
 
     public static final Creator<SearchRequestModel> CREATOR = new Creator<SearchRequestModel>() {
@@ -55,6 +41,17 @@ public class SearchRequestModel implements Parcelable{
         }
     };
 
+    public String getmDepart(){
+        return mDepart;
+    }
+    public String getmDestination(){
+        return mDestination;
+    }
+    public String getmDate(){
+        return mDate;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -62,9 +59,9 @@ public class SearchRequestModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mVilleDepart);
-        dest.writeString(mVilleDestination);
-        dest.writeInt(mDateP);
+        dest.writeString(mDepart);
+        dest.writeString(mDestination);
+        dest.writeString(mDate);
     }
-
 }
+
