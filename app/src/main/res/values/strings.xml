@@ -19,6 +19,8 @@
     <string name="hintprénom">Prénom</string>
     <string name="Drivername">Bernard</string>
     <string name="Driversurname">Tapis</string>
+    <string name="searchButton">Search</string>
+    <string name="submit">Submit</string>
 
 </resources>
 

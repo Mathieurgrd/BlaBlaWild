@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BlaBlaWild</string>
+    <string name="Arrivée">Arrival</string>
+    <string name="BoutonHome">Find a course</string>
+    <string name="Date">Search</string>
+    <string name="Drivername">Driver Name</string>
+    <string name="Menu">Results</string>
+    <string name="RechercherBouton">Search</string>
+    <string name="Toast">Please fill in all the fields</string>
+    <string name="Toast2">"Congrat ! Your course is locked for the "</string>
+    <string name="action_settings">Settings</string>
+    <string name="départ">Departure</string>
+    <string name="hintArrivée">Arrival</string>
+    <string name="hintDepart">Departure</string>
+    <string name="hintdate">Date</string>
+    <string name="hintnom">Name</string>
+    <string name="hintprix">Price</string>
+    <string name="hintprénom">First Name</string>
+    <string name="searchButton">Search</string>
+    <string name="search_text">Search</string>
+    <string name="submit">Submit</string>
+    <string name="Driversurname">Driver Surname</string>
+    <string name="title_activity_submit_itinerary">Submit Itinerary Activity</string>
+</resources>
