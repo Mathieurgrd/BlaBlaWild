@@ -21,6 +21,8 @@
     <string name="Driversurname">Tapis</string>
     <string name="searchButton">Search</string>
     <string name="submit">Submit</string>
+    <string name="auth_failed">Fail</string>
+    <string name="emailpassword_status_fmt">L\'user n\'est pas null !</string>
 
 </resources>
 

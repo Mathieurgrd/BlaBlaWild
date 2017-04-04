@@ -2,10 +2,14 @@ package com.example.mathieu.blablawild;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -13,6 +17,8 @@ public class ViewSearchItineraryResultsListsActivity extends AppCompatActivity {
 
     DatabaseReference mDatabase;
     ListView itemsListView;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    public static final String TAG = "EmailPassword";
 
 
     @Override
@@ -27,6 +33,28 @@ public class ViewSearchItineraryResultsListsActivity extends AppCompatActivity {
 
         Toast.makeText(ViewSearchItineraryResultsListsActivity.this, getString(R.string.Toast2) + trajet.getmDate(),
                 Toast.LENGTH_LONG).show();
+
+
+
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                }
+                // [START_EXCLUDE]
+                //updateUI(user);
+                // [END_EXCLUDE]
+            }
+        };
 
 
 

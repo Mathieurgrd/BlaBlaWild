@@ -32,7 +32,7 @@ public class TripResultAdapter extends Firebaseadapter<ItineraryModel> {
     @Override
     protected void populateView(View view, ItineraryModel iItineraire) {
 
-
+        ID = (TextView) view.findViewById(R.id.textViewID);
         departureDate = (TextView)view.findViewById(R.id.textDateDepart);
         departure = (TextView)view.findViewById(R.id.textviewdepart);
         price = (TextView)view.findViewById(R.id.textPrix);
@@ -42,6 +42,7 @@ public class TripResultAdapter extends Firebaseadapter<ItineraryModel> {
         destination.setText(String.valueOf(iItineraire.getmArrival()));
         departure.setText(String.valueOf(iItineraire.getmDeparture()));
         price.setText(String.valueOf(iItineraire.getmPrice()));
+        ID.setText(String.valueOf(iItineraire.getmUserId()));
 
 
     }

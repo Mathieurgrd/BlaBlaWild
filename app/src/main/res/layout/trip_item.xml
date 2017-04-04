@@ -60,4 +60,13 @@
         android:layout_below="@+id/textViewarrivée"
         android:layout_alignLeft="@+id/textViewLname"
         android:layout_alignStart="@+id/textViewLname" />
+
+    <TextView
+        android:text="TextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textFname"
+        android:layout_toRightOf="@+id/textFname"
+        android:layout_toEndOf="@+id/textFname"
+        android:id="@+id/textViewID" />
 </RelativeLayout>

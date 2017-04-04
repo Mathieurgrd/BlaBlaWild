@@ -1,38 +1,44 @@
 package com.example.mathieu.blablawild;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * Created by mathieu on 16/03/17.
  */
 
 public class ItineraryModel {
 
-    private int mUserId;
+    private String mUserId;
+    private FirebaseAuth mAuth;
     private String mDriverLastName;
     private String mDriverFirstName;
     private String mDepartureDate;
     private String mPrice;
     private String mDeparture;
     private String mArrival;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    public static final String TAG = "EmailPassword";
 
     public ItineraryModel() {
     }
 
 
-    protected ItineraryModel(String DepartureDate, String Price, String Departure, String Arrival) {
+    protected ItineraryModel(String UserId, String DepartureDate, String Price, String Departure, String Arrival) {
 
-        mUserId = 0;
-        mDriverFirstName = "Bernard"  ;
+        this.mUserId = UserId;
+        mDriverFirstName = "Bernard";
         mDriverLastName = "Tapis";
         this.mDepartureDate = DepartureDate;
-        this.mPrice= Price;
+        this.mPrice = Price;
         this.mDeparture = Departure;
         this.mArrival = Arrival;
     }
 
 
+    public String getmUserId() {
+        mUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-    public int getmUserId() {
-        return mUserId;
+        return mUserId ;
     }
 
     public String getmDriverLastName() {
@@ -83,7 +89,9 @@ public class ItineraryModel {
         this.mPrice = mPrice;
     }
 
-    public void setmUserId(int mUserId) {
+    public void setmUserId(String mUserId) {
+
+        mUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         this.mUserId = mUserId;
     }
 }
