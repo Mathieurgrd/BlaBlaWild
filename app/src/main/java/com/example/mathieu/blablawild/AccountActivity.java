@@ -1,7 +1,6 @@
 package com.example.mathieu.blablawild;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -41,9 +40,15 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    String userEmail = user.getEmail();
+                    String userName = user.getDisplayName();
+                    EmailtextView.setText(userEmail);
+                    NameTextView.setText(userName);
+
 
 
                 } else {
@@ -56,33 +61,6 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
             }
         };
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            //Bitmap ProfilePhoto = BitmapFactory.decodeResource(getResources(), R.drawable.index);
-
-
-            // Check if user's email is verified
-            boolean emailVerified = user.isEmailVerified();
-            EmailtextView.setText(email);
-            NameTextView.setText(name);
-            //imageViewProfile.setImageBitmap(ProfilePhoto);
-           // DontMindAboutMe gifImageView = (DontMindAboutMe) findViewById(R.id.GifImageView);
-            //gifImageView.setGifImageResource(R.drawable.gifImage);
-
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
-            String uid = user.getUid();
-        }
-
-
-
     }
 
 
@@ -90,6 +68,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+
     }
 
     @Override
@@ -112,7 +91,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         if (i == R.id.buttonSignOut) {
             signOut();
             startActivity(new Intent(getApplicationContext(), SignInActivity.class));
-        } else if (i == R.id.button2Main){
+        } else if (i == R.id.button2Main) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
     }

@@ -1,5 +1,6 @@
 package com.example.mathieu.blablawild;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    startActivity(new Intent(getApplicationContext(), AccountActivity.class));
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -97,12 +99,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
+
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Toast.makeText(SignUpActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
+                        }else {
+                            startActivity(new Intent(getApplicationContext() , SignInActivity.class));
+                            finish();
                         }
 
                     }
@@ -110,32 +116,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         // [END create_user_with_email]
     }
 
-    private void sendEmailVerification() {
-    // Send verification email
-    // [START send_email_verification]
-    final FirebaseUser user = mAuth.getCurrentUser();
-    user.sendEmailVerification()
-            .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-        @Override
-        public void onComplete(@NonNull Task<Void> task) {
-            // [START_EXCLUDE]
-            // Re-enable button
-            findViewById(R.id.buttonverify).setEnabled(true);
 
-            if (task.isSuccessful()) {
-                Toast.makeText(getApplicationContext(),
-                        "Verification email sent to " + user.getEmail(),
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                Log.e(TAG, "sendEmailVerification", task.getException());
-                Toast.makeText(getApplicationContext(),
-                        "Failed to send verification email.",
-                        Toast.LENGTH_SHORT).show();
-            }
-            // [END_EXCLUDE]
-        }
-    }); }
-    // [END send_email_verification]
 
 
     private void signOut() {
@@ -170,8 +151,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         int i = v.getId();
         if (i == R.id.button_register) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+
+
         } else if (i == R.id.buttonverify) {
-        sendEmailVerification();
+        Toast.makeText(getApplicationContext(), "Pointless Button" , Toast.LENGTH_SHORT).show();
     }
     }
 }
