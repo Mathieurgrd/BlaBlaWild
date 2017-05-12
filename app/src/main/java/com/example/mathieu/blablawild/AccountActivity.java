@@ -17,8 +17,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
@@ -67,7 +69,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         imageViewUserProfile = (ImageView) findViewById(R.id.imageViewUserProfile);
         findViewById(R.id.buttonupload).setOnClickListener(this);
         findViewById(R.id.button2Main).setOnClickListener(this);
-
+        findViewById(R.id.buttonuploadname).setOnClickListener(this);
 
 
 
@@ -90,8 +92,8 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
 
                     String userId = user.getUid();
 
-                     /** mPhotoStorage = FirebaseStorage.getInstance().getReference();
-                    StorageReference photoRef = mPhotoStorage.child(userId);
+                    mPhotoStorage = FirebaseStorage.getInstance().getReference();
+                    StorageReference photoRef = mPhotoStorage.child("userPics/" + userId);
 
 
 
@@ -106,7 +108,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
                                     imageViewUserProfile.setImageDrawable(circularBitmapDrawable);
 
                                 }
-                            }); */
+                            });
 
 
 
@@ -238,6 +240,35 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(getApplicationContext(), SignInActivity.class));
         } else if (i == R.id.button2Main) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }else if(i == R.id.buttonuploadname){
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            EditText editTextpseudo = (EditText) findViewById(R.id.editTextpseudo);
+            String DisplayName = editTextpseudo.getText().toString();
+
+
+            if (DisplayName.length() != 0) {
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(DisplayName)
+                        .build();
+
+                user.updateProfile(profileUpdates)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "User profile updated.");
+                                }
+                            }
+                        });
+
+            }else{
+                Toast.makeText(AccountActivity.this, "You must enter a pseudo", Toast.LENGTH_LONG).show();
+            }
+
+
+
+
         }else if (i ==R.id.buttonupload ){ AlertDialog.Builder a1 = new AlertDialog.Builder(AccountActivity.this);
 
 

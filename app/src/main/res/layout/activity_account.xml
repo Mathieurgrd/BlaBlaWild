@@ -87,5 +87,13 @@
         android:layout_toStartOf="@+id/button2Main"
         android:text="Upload" />
 
+    <Button
+        android:id="@+id/buttonuploadname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="Button" />
+
 
 </RelativeLayout>
