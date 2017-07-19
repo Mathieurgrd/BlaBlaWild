@@ -23,6 +23,11 @@
     <string name="submit">Submit</string>
     <string name="auth_failed">Fail</string>
     <string name="emailpassword_status_fmt">L\'user n\'est pas null !</string>
+    <string name="depart">depart</string>
+    <string name="destination">destination</string>
+    <string name="prix">prix</string>
+    <string name="date">date</string>
+    <string name="valider">valider</string>
 
 </resources>
 

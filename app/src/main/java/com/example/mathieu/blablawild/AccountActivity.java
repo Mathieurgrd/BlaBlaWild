@@ -198,13 +198,6 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
 
                             }
                         });
-
-
-
-
-
-
-
             }
         });
 
@@ -242,8 +235,8 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }else if(i == R.id.buttonuploadname){
 
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            EditText editTextpseudo = (EditText) findViewById(R.id.editTextpseudo);
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            final EditText editTextpseudo = (EditText) findViewById(R.id.editTextpseudo);
             String DisplayName = editTextpseudo.getText().toString();
 
 
@@ -258,6 +251,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Log.d(TAG, "User profile updated.");
+                                    editTextpseudo.setText(user.getDisplayName());
                                 }
                             }
                         });
